@@ -89,8 +89,6 @@ val drawable = Rainbow(myCheckBox).palette {
 }.getDrawable()
 ```
 
-<img src="https://user-images.githubusercontent.com/24237865/63634479-f8e7a900-c691-11e9-99b7-c40651a593f0.gif" align="right" width="33%"/>
-
 ### RainbowView
 RainbowView is a gradient view for implementing a gradation effect. <br><br>
 Add following XML namespace inside your XML layout file.
@@ -98,6 +96,8 @@ Add following XML namespace inside your XML layout file.
 ```gradle
 xmlns:app="http://schemas.android.com/apk/res-auto"
 ```
+
+<img src="https://user-images.githubusercontent.com/24237865/63634479-f8e7a900-c691-11e9-99b7-c40651a593f0.gif" align="right" width="33%"/>
 
 #### RainbowView in xml layout
 ```gradle
