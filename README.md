@@ -42,6 +42,8 @@ Rainbow(myCardView).palette { // constructs a palette for collecting colors.
  .foreground() // gives gradation effect to myCardView
 ```
 
+<img src="https://user-images.githubusercontent.com/24237865/63633706-6c37ed80-c687-11e9-9316-b29530c7f1a8.jpg" align="right" width="32%"/>
+
 ### Background, Foreground
 We can give gradations effect composed with palette colors to the background or foreground.<br>
 The `forground()` would be used for your `CardView` or something others.
