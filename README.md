@@ -119,9 +119,7 @@ Tha `rainbowView_colors` attributes gets color list from the color-array from yo
     <item>@color/orange_100</item>
     <item>@color/yellow_100</item>
     <item>@color/green_100</item>
-    <item>@color/blue_100</item>
-    <item>@color/indigo_100</item>
-    <item>@color/purple_100</item>
+    ...
   </array>
 </resources>
 ```
