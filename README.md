@@ -78,7 +78,7 @@ Rainbow(myCheckBox).palette {
 ```
 
 ### Drawable
-You can get a `GradientDrawable` using `getDrawable` method. <br>
+We can get a `GradientDrawable` using `getDrawable` method. <br>
 
 ```kotlin
 val drawable = Rainbow(myCheckBox).palette {
@@ -94,7 +94,7 @@ Add following XML namespace inside your XML layout file.
 ```gradle
 xmlns:app="http://schemas.android.com/apk/res-auto"
 ```
-<img src="https://user-images.githubusercontent.com/24237865/63634081-74465c00-c68c-11e9-94d0-20ce48a57c7e.jpg" align="right" width="32%"/>
+<img src="https://user-images.githubusercontent.com/24237865/63634081-74465c00-c68c-11e9-94d0-20ce48a57c7e.jpg" align="right" width="33%"/>
 
 #### RainbowView in xml layout
 ```gradle
