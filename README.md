@@ -33,7 +33,7 @@ We can apply gradations and tinting to any views easily using `Rainbow` class.
 Palette lambda expression collects colors for creating gradation.<br>
 We can collect colors using `contextColor` and `color` functions.<br>
 `contextColor` gets a __resource__ color from your `colors.xml` file, and `color` gets a __ColorInt__ color.<br>
-They should be used with `+` operation in the palette lambda expression.
+They should be used with `+` operator in the palette lambda expression.
 
 ```kotlin
 Rainbow(myCardView).palette { // constructs a palette for collecting colors.
