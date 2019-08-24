@@ -65,7 +65,7 @@ We can change eight kinds of orientation using `RainbowOrientation`.
 background(orientation = RainbowOrientation.RIGHT_LEFT, radius = 8)
 background(orientation = RainbowOrientation.TOP_BOTTOM, radius = 8)
 foreground(orientation = RainbowOrientation.DIAGONAL_TOP_LEFT, radius = 8)
-foreground(orientation = RainbowOrientation.DIAGONAL_BOTTOM_RIGHT, radius = 8)
+foreground(RainbowOrientation.DIAGONAL_BOTTOM_RIGHT, radius = 8)
 ```
 
 ### Tinting
@@ -89,6 +89,8 @@ val drawable = Rainbow(myCheckBox).palette {
 }.getDrawable()
 ```
 
+<img src="https://user-images.githubusercontent.com/24237865/63634479-f8e7a900-c691-11e9-99b7-c40651a593f0.gif" align="right" width="33%"/>
+
 ### RainbowView
 RainbowView is a gradient view for implementing a gradation effect. <br><br>
 Add following XML namespace inside your XML layout file.
@@ -96,7 +98,6 @@ Add following XML namespace inside your XML layout file.
 ```gradle
 xmlns:app="http://schemas.android.com/apk/res-auto"
 ```
-<img src="https://user-images.githubusercontent.com/24237865/63634081-74465c00-c68c-11e9-94d0-20ce48a57c7e.jpg" align="right" width="33%"/>
 
 #### RainbowView in xml layout
 ```gradle
@@ -139,6 +140,24 @@ BinaryRainbowView is a gradient view for implementing a simple gradation effect.
   app:binaryRainbowView_orientation="bottom_top" // gradient orientation.
   app:binaryRainbowView_radius="12dp" // corner radius
 />
+```
+
+### Shuffle
+`RainbowView` and `BinaryRainbowView` provides shuffling the palette colors using `shuffleColors()` method.
+```kotlin
+rainbow.shuffleColors()
+```
+
+### Usage in Java
+Here are some usages for Java developers.
+
+```java
+new Rainbow(view)
+    .addContextColor(R.color.red_100)
+    .addContextColor(R.color.orange_100)
+    .addContextColor(R.color.yellow_100)
+    .addContextColor(R.color.green_100)
+    .background(RainbowOrientation.RIGHT_LEFT, 8);
 ```
 
 ## Find this library useful? :heart:
