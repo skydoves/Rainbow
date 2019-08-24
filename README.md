@@ -8,7 +8,7 @@
 </p>
 
 <p align="center">
-🌈 An easy way to give gradation effect and tinting for Android.
+🌈 An easy way to apply gradations and tinting for Android.
 </p>
 
 <p align="center">
@@ -27,7 +27,7 @@ dependencies {
 ```
 
 ## Usage
-We can give gradations effect and tinting to any views easily using `Rainbow` class.
+We can apply gradations and tinting to any views easily using `Rainbow` class.
 
 ### Palette
 Palette lambda expression collects colors for creating gradation.<br>
@@ -43,13 +43,13 @@ Rainbow(myCardView).palette { // constructs a palette for collecting colors.
   +contextColor(R.color.blue_200)
   +color(Color.WHITE) // getting a color
 }.withAlpha(225) // sets alpha
- .foreground() // gives gradation effect to myCardView
+ .foreground() // applies gradations to myCardView
 ```
 
 <img src="https://user-images.githubusercontent.com/24237865/63633706-6c37ed80-c687-11e9-9316-b29530c7f1a8.jpg" align="right" width="32%"/>
 
 ### Background, Foreground
-We can give gradations effect composed with palette colors to the background or foreground.<br>
+We can apply gradations composed with palette colors to the background or foreground.<br>
 The `forground()` would be used for your `CardView` or something others.
 
 ```kotlin
@@ -90,7 +90,7 @@ val drawable = Rainbow(myCheckBox).palette {
 ```
 
 ### RainbowView
-RainbowView is a gradient view for implementing a gradation effect. <br><br>
+RainbowView is a gradient view for implementing a gradations. <br><br>
 Add following XML namespace inside your XML layout file.
 
 ```gradle
