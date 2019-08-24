@@ -26,8 +26,9 @@
   <color name="md_purple_200">#7200CA</color>
 
   <array name="colors">
-    <item>@color/colorPrimary</item>
-    <item>@color/yellow</item>
+    <item>@color/md_yellow_100</item>
+    <item>@color/md_orange_100</item>
     <item>@color/md_green_100</item>
+    <item>@color/md_blue_100</item>
   </array>
 </resources>

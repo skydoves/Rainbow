@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2019 skydoves
+ * Designed and developed by 2019 skydoves (Jaewoong Eum)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,6 +20,7 @@ import android.graphics.Color
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.skydoves.rainbow.Rainbow
+import com.skydoves.rainbow.RainbowOrientation
 import com.skydoves.rainbow.color
 import com.skydoves.rainbow.contextColor
 import kotlinx.android.synthetic.main.activity_main.*
@@ -30,15 +31,37 @@ class MainActivity : AppCompatActivity() {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_main)
 
-    button.setOnClickListener {
-      rainbow.shuffleColors()
-    }
-
-    Rainbow(testView).palette {
+    Rainbow(cardView0).palette {
       +contextColor(R.color.skyBlue)
       +contextColor(R.color.colorPrimary)
-      +contextColor(R.color.yellow)
       +color(Color.WHITE)
-    }.withAlpha(100).foreground()
+      +contextColor(R.color.yellow)
+    }.foreground()
+
+    Rainbow(cardView1).palette {
+      +contextColor(R.color.colorPrimary)
+      +contextColor(R.color.md_orange_100)
+      +contextColor(R.color.md_yellow_100)
+      +contextColor(R.color.md_green_200)
+      +contextColor(R.color.md_blue_200)
+      +contextColor(R.color.md_purple_100)
+    }.foreground(orientation = RainbowOrientation.LEFT_RIGHT)
+
+    Rainbow(cardView2).palette {
+      +contextColor(R.color.colorPrimary)
+      +contextColor(R.color.md_orange_100)
+      +contextColor(R.color.md_yellow_100)
+      +contextColor(R.color.md_green_200)
+      +contextColor(R.color.md_blue_200)
+      +contextColor(R.color.md_purple_100)
+    }.foreground(orientation = RainbowOrientation.TOP_BOTTOM)
+
+    Rainbow(cardView3).palette {
+      +contextColor(R.color.md_red_400)
+      +contextColor(R.color.md_yellow_100)
+      +contextColor(R.color.md_green_100)
+      +contextColor(R.color.md_blue_100)
+      +contextColor(R.color.white)
+    }.withAlpha(200).foreground()
   }
 }
