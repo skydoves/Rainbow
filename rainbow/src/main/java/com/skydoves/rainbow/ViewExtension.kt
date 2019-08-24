@@ -25,11 +25,10 @@ internal const val outRangeColor = 65555
 
 /** dp size to px size. */
 internal fun View.dp2Px(dp: Int): Float {
-  val scale = resources.displayMetrics.density
-  return dp * scale
+    val scale = resources.displayMetrics.density
+    return dp * scale
 }
 
 /** px size to dp size. */
-internal fun View.px2Dp(px: Float): Float {
-  return px / (context.resources.displayMetrics.densityDpi / DisplayMetrics.DENSITY_DEFAULT)
-}
+internal fun View.px2Dp(px: Float): Float =
+    px / (context.resources.displayMetrics.densityDpi / DisplayMetrics.DENSITY_DEFAULT)

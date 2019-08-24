@@ -22,7 +22,7 @@
 Add a dependency code to your **module**'s `build.gradle` file.
 ```gradle
 dependencies {
-    implementation "com.github.skydoves:rainbow:1.0.0"
+    implementation "com.github.skydoves:rainbow:1.0.1"
 }
 ```
 
@@ -42,40 +42,48 @@ Rainbow(myCardView).palette { // constructs a palette for collecting colors.
   +contextColor(R.color.green_200)
   +contextColor(R.color.blue_200)
   +color(Color.WHITE) // getting a color
-}.withAlpha(225) // sets alpha
+}.withAlpha(225) // sets alpha (0~255)
  .foreground() // applies gradations to myCardView
+```
+
+Here is a kotlin-extesion way to apply gradations using `View.rainbow()` method to views.
+
+```kotlin
+myLinearLayout.rainbow().palette {
+  +contextColor(R.color.skyBlue)
+  +contextColor(R.color.colorPrimary)
+}.background(orientation = RainbowOrientation.TOP_BOTTOM, radius = 8)
 ```
 
 <img src="https://user-images.githubusercontent.com/24237865/63633706-6c37ed80-c687-11e9-9316-b29530c7f1a8.jpg" align="right" width="32%"/>
 
 ### Background, Foreground
-We can apply gradations composed with palette colors to the background or foreground.<br>
-The `forground()` would be used for your `CardView` or something others.
+We can apply gradations composed with palette colors to the view's background or foreground.<br>
+The `forground()` method can be applied to your `CardView` or something others.
 
 ```kotlin
-Rainbow(myCardView).palette { // constructs a palette for collecting colors.
-  +contextColor(R.color.red_200) // getting a color from the resource
+Rainbow(myCardView).palette {
+  +contextColor(R.color.red_200)
   +contextColor(R.color.yellow_200)
 }.background() or .foreground()
 ```
 
-And we can control the gradation orientation and corner radius. <br>
-We can change eight kinds of orientation using `RainbowOrientation`.
+And we can control the gradient orientation and corner radius. <br>
+We can use 8 kinds of orientation which `RainbowOrientation`.
 ```kotlin
 background(orientation = RainbowOrientation.RIGHT_LEFT, radius = 8)
 background(orientation = RainbowOrientation.TOP_BOTTOM, radius = 8)
-foreground(orientation = RainbowOrientation.DIAGONAL_TOP_LEFT, radius = 8)
-foreground(RainbowOrientation.DIAGONAL_BOTTOM_RIGHT, radius = 8)
+foreground(RainbowOrientation.DIAGONAL_TOP_LEFT, 8)
+foreground(RainbowOrientation.DIAGONAL_BOTTOM_RIGHT, 8)
 ```
 
 ### Tinting
-We can change tint colors to some kinds of views which can be tint.<br>
-Here are views can be tint: TextView(drawable), ImageView, [CompoundButton](https://www.google.com/search?q=CompoundButton&oq=compo&aqs=chrome.0.69i59l2j69i57j69i60l2j69i61.4868j0j4&sourceid=chrome&ie=UTF-8), [TintableBackgroundView](https://developer.android.com/reference/androidx/core/view/TintableBackgroundView).
+We can change some kinds of view's tint colors which can be applied tint.<br>
+Here are views can be applied tint: TextView(drawable), ImageView, [CompoundButton](https://www.google.com/search?q=CompoundButton&oq=compo&aqs=chrome.0.69i59l2j69i57j69i60l2j69i61.4868j0j4&sourceid=chrome&ie=UTF-8), [TintableBackgroundView](https://developer.android.com/reference/androidx/core/view/TintableBackgroundView).
 
 ```kotlin
 Rainbow(myCheckBox).palette {
   +contextColor(R.color.red_200)
-  +contextColor(R.color.yellow_200)
 }.tint()
 ```
 
@@ -90,7 +98,7 @@ val drawable = Rainbow(myCheckBox).palette {
 ```
 
 ### RainbowView
-RainbowView is a gradient view for implementing a gradations. <br><br>
+RainbowView is a gradient view for implementing gradations. <br><br>
 Add following XML namespace inside your XML layout file.
 
 ```gradle
@@ -128,7 +136,7 @@ Tha `rainbowView_colors` attributes gets color list from the color-array from yo
 ```
 
 ### BinaryRainbowView
-BinaryRainbowView is a gradient view for implementing a simple gradation effect. <br>
+BinaryRainbowView is a gradient view for implementing a simple view with gradations.
 
 ```gradle
 <com.skydoves.rainbow.BinaryRainbowView
@@ -143,7 +151,7 @@ BinaryRainbowView is a gradient view for implementing a simple gradation effect.
 ```
 
 ### Shuffle
-`RainbowView` and `BinaryRainbowView` provides shuffling the palette colors using `shuffleColors()` method.
+`RainbowView` and `BinaryRainbowView` provides shuffling the palette colors using `shuffleColors()` method. The gradation colors placement will be changed randomly.
 ```kotlin
 rainbow.shuffleColors()
 ```
@@ -152,11 +160,12 @@ rainbow.shuffleColors()
 Here are some usages for Java developers.
 
 ```java
-new Rainbow(view)
+new Rainbow(myView)
     .addContextColor(R.color.red_100)
     .addContextColor(R.color.orange_100)
     .addContextColor(R.color.yellow_100)
     .addContextColor(R.color.green_100)
+    .withAlpha(255)
     .background(RainbowOrientation.RIGHT_LEFT, 8);
 ```
 

@@ -23,6 +23,7 @@ import com.skydoves.rainbow.Rainbow
 import com.skydoves.rainbow.RainbowOrientation
 import com.skydoves.rainbow.color
 import com.skydoves.rainbow.contextColor
+import com.skydoves.rainbow.rainbow
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -30,6 +31,11 @@ class MainActivity : AppCompatActivity() {
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_main)
+
+    cardView0.rainbow().palette {
+      +contextColor(R.color.skyBlue)
+      +contextColor(R.color.colorPrimary)
+    }.background(orientation = RainbowOrientation.TOP_BOTTOM, radius = 8)
 
     Rainbow(cardView0).palette {
       +contextColor(R.color.skyBlue)

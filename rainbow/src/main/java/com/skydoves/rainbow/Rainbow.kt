@@ -32,13 +32,20 @@ import androidx.core.widget.CompoundButtonCompat
 import androidx.core.widget.ImageViewCompat
 import androidx.core.widget.TextViewCompat
 
-/** An easy way to give gradation effect and tinting. */
+@DslMarker
+annotation class RainbowDsl
+
+/** creates an instance of [Rainbow] by a view. */
+fun View.rainbow(): Rainbow = Rainbow(this)
+
+/** An easy way to apply gradations and tinting for Android. */
 class Rainbow(val view: View) {
 
   private val rainbowColorList = mutableListOf<ContextColor>()
   private var alpha = 255
 
   /** constructs a palette for collecting colors. */
+  @RainbowDsl
   fun palette(block: Rainbow.() -> Unit): Rainbow {
     val rainbow = Rainbow(view)
     rainbow.block()
@@ -127,7 +134,10 @@ class Rainbow(val view: View) {
   }
 
   /** gets the gradation drawable which composed with palette colors. */
-  fun getDrawable(orientation: RainbowOrientation = RainbowOrientation.LEFT_RIGHT, radius: Int = 0): GradientDrawable {
+  fun getDrawable(
+    orientation: RainbowOrientation = RainbowOrientation.LEFT_RIGHT,
+    radius: Int = 0
+  ): GradientDrawable {
     return getGradientDrawable(orientation, radius)
   }
 
@@ -138,9 +148,7 @@ class Rainbow(val view: View) {
     return gradient
   }
 
-  private fun emptyColors(): Boolean {
-    return rainbowColorList.isEmpty()
-  }
+  private fun emptyColors(): Boolean = rainbowColorList.isEmpty()
 
   private fun getColorStateList(): ColorStateList {
     val states = mutableListOf<Int>()
@@ -150,15 +158,9 @@ class Rainbow(val view: View) {
     return ColorStateList(arrayOf(states.toIntArray()), rainbowColorList.toIntArray()).withAlpha(alpha)
   }
 
-  operator fun ContextColor.unaryPlus() {
-    rainbowColorList.add(this)
-  }
+  operator fun ContextColor.unaryPlus() = rainbowColorList.add(this)
 
-  operator fun List<Int>.unaryPlus() {
-    rainbowColorList.addAll(this.toContextColorList())
-  }
+  operator fun List<Int>.unaryPlus() = rainbowColorList.addAll(this.toContextColorList())
 
-  operator fun IntArray.unaryPlus() {
-    rainbowColorList.addAll(this.toContextColorList())
-  }
+  operator fun IntArray.unaryPlus() = rainbowColorList.addAll(this.toContextColorList())
 }
