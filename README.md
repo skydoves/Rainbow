@@ -94,13 +94,14 @@ Add following XML namespace inside your XML layout file.
 ```gradle
 xmlns:app="http://schemas.android.com/apk/res-auto"
 ```
+<img src="https://user-images.githubusercontent.com/24237865/63634081-74465c00-c68c-11e9-94d0-20ce48a57c7e.jpg" align="right" width="32%"/>
 
 #### RainbowView in xml layout
 ```gradle
 <com.skydoves.rainbow.RainbowView
   android:id="@+id/rainbow"
   android:layout_width="match_parent"
-  android:layout_height="120dp"
+  android:layout_height="match_parent"
   app:rainbowView_colors="@array/colors" // colors for gradient.
   app:rainbowView_orientation="left_right" // gradient orientation.
   app:rainbowView_radius="12dp" // corner radius.
@@ -114,10 +115,13 @@ Tha `rainbowView_colors` attributes gets color list from the color-array from yo
   <color name="colorPrimary">#C51162</color>
   ...
   <array name="colors">
-    <item>@color/md_yellow_100</item>
-    <item>@color/md_orange_100</item>
-    <item>@color/md_green_100</item>
-    <item>@color/md_blue_100</item>
+    <item>@color/red_100</item>
+    <item>@color/orange_100</item>
+    <item>@color/yellow_100</item>
+    <item>@color/green_100</item>
+    <item>@color/blue_100</item>
+    <item>@color/indigo_100</item>
+    <item>@color/purple_100</item>
   </array>
 </resources>
 ```
