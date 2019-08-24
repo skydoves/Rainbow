@@ -16,6 +16,7 @@
 </p>
 
 ## Download
+[![Download](https://api.bintray.com/packages/devmagician/maven/rainbow/images/download.svg) ](https://bintray.com/devmagician/maven/rainbow/_latestVersion)
 [![Jitpack](https://jitpack.io/v/skydoves/Rainbow.svg)](https://jitpack.io/#skydoves/Rainbow)
 ### Gradle
 Add a dependency code to your **module**'s `build.gradle` file.
@@ -68,7 +69,8 @@ foreground(orientation = RainbowOrientation.DIAGONAL_BOTTOM_RIGHT, radius = 8)
 ```
 
 ### Tinting
-We can change tint colors to some kinds of views which can be tint.
+We can change tint colors to some kinds of views which can be tint.<br>
+Here are views can be tint: TextView(drawable), ImageView, [CompoundButton](https://www.google.com/search?q=CompoundButton&oq=compo&aqs=chrome.0.69i59l2j69i57j69i60l2j69i61.4868j0j4&sourceid=chrome&ie=UTF-8), [TintableBackgroundView](https://developer.android.com/reference/androidx/core/view/TintableBackgroundView).
 
 ```kotlin
 Rainbow(myCheckBox).palette {
