@@ -1,0 +1,13 @@
+apply plugin: 'com.novoda.bintray-release'
+apply from: '../dependencies.gradle'
+
+publish {
+    userOrg = 'devmagician'
+    groupId = 'com.github.skydoves'
+    artifactId = 'rainbow'
+    publishVersion = versions.versionName
+    desc = 'An easy way to give gradation effect and tinting.'
+    website = 'https://github.com/skydoves/Rainbow'
+    issueTracker = "${website}/issues"
+    repository = "${website}.git"
+}

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  android:id="@+id/myLayout"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:orientation="vertical"
+  android:padding="20dp">
+
+  <CheckBox
+    android:id="@+id/button"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" />
+
+  <com.skydoves.rainbow.RainbowView
+    android:id="@+id/rainbow"
+    android:layout_width="match_parent"
+    android:layout_height="120dp"
+    app:rainbowView_colors="@array/colors"
+    app:rainbowView_orientation="left_right"
+    app:rainbowView_radius="12dp" />
+
+  <com.skydoves.rainbow.BinaryRainbowView
+    android:layout_width="match_parent"
+    android:layout_height="80dp"
+    android:layout_marginTop="30dp"
+    app:binaryRainbowView_endColor="@color/skyBlue"
+    app:binaryRainbowView_radius="12dp"
+    app:binaryRainbowView_startColor="@color/md_green_100" />
+
+  <androidx.cardview.widget.CardView
+    android:id="@+id/testView"
+    android:layout_width="match_parent"
+    android:layout_height="60dp"
+    android:src="@drawable/sample"
+    android:layout_margin="20dp"/>
+
+</LinearLayout>
