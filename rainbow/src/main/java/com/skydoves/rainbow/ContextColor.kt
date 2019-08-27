@@ -17,4 +17,5 @@
 package com.skydoves.rainbow
 
 /** ContextColor is a data class for wrapping color value. */
-data class ContextColor(val color: Int)
+@UseExperimental(ExperimentalUnsignedTypes::class)
+inline class ContextColor(val color: Int)
