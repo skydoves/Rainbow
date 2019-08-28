@@ -46,7 +46,7 @@ class Rainbow(val view: View) {
 
   /** constructs a palette for collecting colors. */
   @RainbowDsl
-  fun palette(block: Rainbow.() -> Unit): Rainbow {
+  inline fun palette(block: Rainbow.() -> Unit): Rainbow {
     val rainbow = Rainbow(view)
     rainbow.block()
     return rainbow
