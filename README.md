@@ -79,7 +79,7 @@ foreground(RainbowOrientation.DIAGONAL_BOTTOM_RIGHT, 8)
 
 ### Tinting
 We can change some kinds of view's tint colors which can be applied tint.<br>
-Here are views can be applied tint: TextView(drawable), ImageView, [CompoundButton](https://www.google.com/search?q=CompoundButton&oq=compo&aqs=chrome.0.69i59l2j69i57j69i60l2j69i61.4868j0j4&sourceid=chrome&ie=UTF-8), [TintableBackgroundView](https://developer.android.com/reference/androidx/core/view/TintableBackgroundView).
+Here are views can be applied tint: TextView(drawable), ImageView, [CompoundButton](https://developer.android.com/reference/android/widget/CompoundButton), [TintableBackgroundView](https://developer.android.com/reference/androidx/core/view/TintableBackgroundView).
 
 ```kotlin
 Rainbow(myCheckBox).palette {
@@ -119,7 +119,7 @@ xmlns:app="http://schemas.android.com/apk/res-auto"
 />
 ```
 
-Tha `rainbowView_colors` attributes gets color list from the color-array from your `colors.xml`.
+The `rainbowView_colors` attributes gets color list from the color-array from your `colors.xml`.
 
 ```gradle
 <resources>
