@@ -14,19 +14,18 @@
  * limitations under the License.
  */
 
-@file:Suppress("UNCHECKED_CAST")
-
 package com.skydoves.rainbow
 
-import android.util.DisplayMetrics
-import android.view.View
+import androidx.annotation.Dimension
 
-internal const val outRangeColor = 65555
-
-/** dp size to px size. */
-internal fun View.dp2Px(dp: Int): Float =
-  dp * resources.displayMetrics.density
-
-/** px size to dp size. */
-internal fun View.px2Dp(px: Float): Float =
-  px / (context.resources.displayMetrics.densityDpi / DisplayMetrics.DENSITY_DEFAULT)
+/**
+ * Denotes that an integer parameter, field or method return value is expected
+ * to represent a device independent pixel dimension.
+ */
+@MustBeDocumented
+@kotlin.annotation.Retention(AnnotationRetention.BINARY)
+@Target(AnnotationTarget.FUNCTION, AnnotationTarget.PROPERTY_GETTER,
+  AnnotationTarget.PROPERTY_SETTER, AnnotationTarget.VALUE_PARAMETER, AnnotationTarget.FIELD,
+  AnnotationTarget.LOCAL_VARIABLE)
+@Dimension(unit = Dimension.DP)
+annotation class Dp

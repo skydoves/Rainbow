@@ -24,7 +24,10 @@ import com.skydoves.rainbow.RainbowOrientation
 import com.skydoves.rainbow.color
 import com.skydoves.rainbow.contextColor
 import com.skydoves.rainbow.rainbow
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_main.cardView0
+import kotlinx.android.synthetic.main.activity_main.cardView1
+import kotlinx.android.synthetic.main.activity_main.cardView2
+import kotlinx.android.synthetic.main.activity_main.cardView3
 
 class MainActivity : AppCompatActivity() {
 

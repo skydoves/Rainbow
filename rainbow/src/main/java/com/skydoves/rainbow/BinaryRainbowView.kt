@@ -22,20 +22,24 @@ import android.content.Context
 import android.content.res.TypedArray
 import android.util.AttributeSet
 import android.view.View
+import androidx.annotation.ColorInt
 
 /** BinaryRainbowView represents gradation effect using three colors. */
 class BinaryRainbowView : View {
 
+  @ColorInt
   var startColor = outRangeColor
     set(value) {
       field = value
       updateBinaryRainbowView()
     }
+  @ColorInt
   var centerColor = outRangeColor
     set(value) {
       field = value
       updateBinaryRainbowView()
     }
+  @ColorInt
   var endColor = outRangeColor
     set(value) {
       field = value
@@ -46,6 +50,7 @@ class BinaryRainbowView : View {
       field = value
       updateBinaryRainbowView()
     }
+  @Dp
   var radius = 5
     set(value) {
       field = value
@@ -58,7 +63,8 @@ class BinaryRainbowView : View {
     getAttrs(attributeSet)
   }
 
-  constructor(context: Context, attributeSet: AttributeSet, defStyle: Int) : super(context, attributeSet, defStyle) {
+  constructor(context: Context, attributeSet: AttributeSet, defStyle: Int) : super(context,
+    attributeSet, defStyle) {
     getAttrs(attributeSet, defStyle)
   }
 
@@ -72,7 +78,8 @@ class BinaryRainbowView : View {
   }
 
   private fun getAttrs(attributeSet: AttributeSet, defStyleAttr: Int) {
-    val typedArray = context.obtainStyledAttributes(attributeSet, R.styleable.BinaryRainbowView, defStyleAttr, 0)
+    val typedArray =
+      context.obtainStyledAttributes(attributeSet, R.styleable.BinaryRainbowView, defStyleAttr, 0)
     try {
       setTypeArray(typedArray)
     } finally {
@@ -81,12 +88,17 @@ class BinaryRainbowView : View {
   }
 
   private fun setTypeArray(a: TypedArray) {
-    this.radius = px2Dp(a.getDimension(R.styleable.RainbowView_rainbowView_radius, radius.toFloat())).toInt()
+    this.radius =
+      px2Dp(a.getDimension(R.styleable.RainbowView_rainbowView_radius, radius.toFloat())).toInt()
     this.orientation = RainbowOrientation.get(
-      a.getInt(R.styleable.BinaryRainbowView_binaryRainbowView_orientation, RainbowOrientation.LEFT_RIGHT.ordinal))
-    this.startColor = a.getColor(R.styleable.BinaryRainbowView_binaryRainbowView_startColor, outRangeColor)
-    this.centerColor = a.getColor(R.styleable.BinaryRainbowView_binaryRainbowView_centerColor, outRangeColor)
-    this.endColor = a.getColor(R.styleable.BinaryRainbowView_binaryRainbowView_endColor, outRangeColor)
+      a.getInt(R.styleable.BinaryRainbowView_binaryRainbowView_orientation,
+        RainbowOrientation.LEFT_RIGHT.ordinal))
+    this.startColor =
+      a.getColor(R.styleable.BinaryRainbowView_binaryRainbowView_startColor, outRangeColor)
+    this.centerColor =
+      a.getColor(R.styleable.BinaryRainbowView_binaryRainbowView_centerColor, outRangeColor)
+    this.endColor =
+      a.getColor(R.styleable.BinaryRainbowView_binaryRainbowView_endColor, outRangeColor)
   }
 
   private fun updateBinaryRainbowView() {

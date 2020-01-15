@@ -21,6 +21,7 @@ package com.skydoves.rainbow
 import android.annotation.TargetApi
 import android.content.res.ColorStateList
 import android.graphics.drawable.GradientDrawable
+import android.os.Build
 import android.view.View
 import android.widget.CompoundButton
 import android.widget.ImageView
@@ -47,39 +48,32 @@ class Rainbow(val view: View) {
   /** constructs a palette for collecting colors. */
   @RainbowDsl
   inline fun palette(block: Rainbow.() -> Unit): Rainbow {
-    val rainbow = Rainbow(view)
-    rainbow.block()
-    return rainbow
+    return Rainbow(view).apply { block() }
   }
 
   /** adds a color int to the rainbow list. */
-  fun addColor(@ColorInt color: Int): Rainbow {
+  fun addColor(@ColorInt color: Int) = apply {
     this.rainbowColorList.add(color(color))
-    return this
   }
 
   /** adds a resource color to the rainbow list.  */
-  fun addContextColor(color: Int): Rainbow {
+  fun addContextColor(@ColorInt color: Int) = apply {
     this.rainbowColorList.add(contextColor(color))
-    return this
   }
 
   /** adds a color list to the rainbow list. */
-  fun addColorList(colors: List<Int>): Rainbow {
+  fun addColorList(colors: List<Int>) = apply {
     this.rainbowColorList.addAll(colorList(colors))
-    return this
   }
 
   /** adds a color array to the rainbow list. */
-  fun addColorArray(colors: IntArray): Rainbow {
+  fun addColorArray(colors: IntArray) = apply {
     this.rainbowColorList.addAll(colorArray(colors))
-    return this
   }
 
   /** sets an alpha value for presenting gradation. */
-  fun withAlpha(alpha: Int): Rainbow {
+  fun withAlpha(alpha: Int) = apply {
     this.alpha = alpha
-    return this
   }
 
   /**
@@ -103,27 +97,31 @@ class Rainbow(val view: View) {
   }
 
   /** applies gradation effect composed with palette colors to the background. For Java. */
+  @RainbowDsl
   fun background() {
     if (emptyColors()) return
     view.background = getGradientDrawable(RainbowOrientation.LEFT_RIGHT, 0)
   }
 
   /** applies gradation effect composed with palette colors to the background. */
-  fun background(orientation: RainbowOrientation = RainbowOrientation.LEFT_RIGHT, radius: Int = 0) {
+  @RainbowDsl
+  fun background(orientation: RainbowOrientation = RainbowOrientation.LEFT_RIGHT, @Dp radius: Int = 0) {
     if (emptyColors()) return
     view.background = getGradientDrawable(orientation, radius)
   }
 
   /** applies gradation effect composed with palette colors to the foreground. For Java. */
-  @TargetApi(23)
+  @TargetApi(Build.VERSION_CODES.M)
+  @RainbowDsl
   fun foreground() {
     if (emptyColors()) return
     view.foreground = getGradientDrawable(RainbowOrientation.LEFT_RIGHT, 0)
   }
 
   /** applies gradation effect composed with palette colors to the foreground. */
-  @TargetApi(23)
-  fun foreground(orientation: RainbowOrientation = RainbowOrientation.LEFT_RIGHT, radius: Int = 0) {
+  @TargetApi(Build.VERSION_CODES.M)
+  @RainbowDsl
+  fun foreground(orientation: RainbowOrientation = RainbowOrientation.LEFT_RIGHT, @Dp radius: Int = 0) {
     if (emptyColors()) return
     view.foreground = getGradientDrawable(orientation, radius)
   }
@@ -136,16 +134,16 @@ class Rainbow(val view: View) {
   /** gets the gradation drawable which composed with palette colors. */
   fun getDrawable(
     orientation: RainbowOrientation = RainbowOrientation.LEFT_RIGHT,
-    radius: Int = 0
+    @Dp radius: Int = 0
   ): GradientDrawable {
     return getGradientDrawable(orientation, radius)
   }
 
-  private fun getGradientDrawable(orientation: RainbowOrientation, radius: Int): GradientDrawable {
-    val gradient = GradientDrawable(orientation.value, rainbowColorList.toIntArray())
-    gradient.cornerRadius = view.dp2Px(radius)
-    gradient.alpha = alpha
-    return gradient
+  private fun getGradientDrawable(orientation: RainbowOrientation, @Dp radius: Int): GradientDrawable {
+    return GradientDrawable(orientation.value, rainbowColorList.toIntArray()).apply {
+      cornerRadius = view.dp2Px(radius)
+      alpha = this@Rainbow.alpha
+    }
   }
 
   private fun emptyColors(): Boolean = rainbowColorList.isEmpty()
@@ -155,7 +153,8 @@ class Rainbow(val view: View) {
     for (color in rainbowColorList.toIntArray()) {
       states.add(android.R.attr.state_enabled)
     }
-    return ColorStateList(arrayOf(states.toIntArray()), rainbowColorList.toIntArray()).withAlpha(alpha)
+    return ColorStateList(arrayOf(states.toIntArray()), rainbowColorList.toIntArray()).withAlpha(
+      alpha)
   }
 
   operator fun ContextColor.unaryPlus() = rainbowColorList.add(this)
