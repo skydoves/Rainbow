@@ -34,7 +34,7 @@ tasks.withType(Javadoc) {
 
 tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
     kotlinOptions.freeCompilerArgs += ["-XXLanguage:+InlineClasses"]
-    kotlinOptions.freeCompilerArgs += ["-Xuse-experimental=kotlin.Experimental"]
+    kotlinOptions.freeCompilerArgs += ["-Xopt-in=kotlin.OptIn"]
 }
 
 apply from: '../spotless.gradle'
