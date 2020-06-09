@@ -19,6 +19,7 @@
 package com.skydoves.rainbow
 
 import androidx.annotation.ColorInt
+import androidx.annotation.ColorRes
 import androidx.core.content.ContextCompat
 
 /** creates an instance of [ContextColor] using a color value. */
@@ -45,7 +46,8 @@ fun IntArray.toContextColorList(): List<ContextColor> {
 }
 
 /** creates an instance of [ContextColor] using a resource color value. */
-fun Rainbow.contextColor(color: Int): ContextColor = ContextColor(ContextCompat.getColor(view.context, color))
+fun Rainbow.contextColor(@ColorRes color: Int): ContextColor = ContextColor(
+  ContextCompat.getColor(view.context, color))
 
 internal fun getColorListFromIntArray(colors: List<Int>): List<ContextColor> {
   val contextColors = mutableListOf<ContextColor>()

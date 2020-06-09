@@ -27,6 +27,8 @@ import android.widget.CompoundButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.ColorInt
+import androidx.annotation.ColorRes
+import androidx.annotation.IntRange
 import androidx.core.view.TintableBackgroundView
 import androidx.core.view.ViewCompat
 import androidx.core.widget.CompoundButtonCompat
@@ -42,8 +44,9 @@ fun View.rainbow(): Rainbow = Rainbow(this)
 /** An easy way to apply gradations and tinting for Android. */
 class Rainbow(val view: View) {
 
-  private val rainbowColorList = mutableListOf<ContextColor>()
-  private var alpha = 255
+  private val rainbowColorList: MutableList<ContextColor> = mutableListOf()
+  private var alpha: Int = 255
+  private var elevation: Int = 0
 
   /** constructs a palette for collecting colors. */
   @RainbowDsl
@@ -57,7 +60,7 @@ class Rainbow(val view: View) {
   }
 
   /** adds a resource color to the rainbow list.  */
-  fun addContextColor(@ColorInt color: Int) = apply {
+  fun addContextColor(@ColorRes color: Int) = apply {
     this.rainbowColorList.add(contextColor(color))
   }
 
@@ -72,8 +75,13 @@ class Rainbow(val view: View) {
   }
 
   /** sets an alpha value for presenting gradation. */
-  fun withAlpha(alpha: Int) = apply {
+  fun withAlpha(@IntRange(from = 0, to = 255) alpha: Int) = apply {
     this.alpha = alpha
+  }
+
+  /** sets an elevation to the view. */
+  fun withElevation(@Dp elevation: Float) = apply {
+    ViewCompat.setElevation(this.view, view.dp2Px(elevation.toInt()))
   }
 
   /**
@@ -105,7 +113,10 @@ class Rainbow(val view: View) {
 
   /** applies gradation effect composed with palette colors to the background. */
   @RainbowDsl
-  fun background(orientation: RainbowOrientation = RainbowOrientation.LEFT_RIGHT, @Dp radius: Int = 0) {
+  fun background(
+    orientation: RainbowOrientation = RainbowOrientation.LEFT_RIGHT,
+    @Dp radius: Int = 0
+  ) {
     if (emptyColors()) return
     view.background = getGradientDrawable(orientation, radius)
   }
@@ -121,7 +132,10 @@ class Rainbow(val view: View) {
   /** applies gradation effect composed with palette colors to the foreground. */
   @TargetApi(Build.VERSION_CODES.M)
   @RainbowDsl
-  fun foreground(orientation: RainbowOrientation = RainbowOrientation.LEFT_RIGHT, @Dp radius: Int = 0) {
+  fun foreground(
+    orientation: RainbowOrientation = RainbowOrientation.LEFT_RIGHT,
+    @Dp radius: Int = 0
+  ) {
     if (emptyColors()) return
     view.foreground = getGradientDrawable(orientation, radius)
   }
@@ -139,7 +153,10 @@ class Rainbow(val view: View) {
     return getGradientDrawable(orientation, radius)
   }
 
-  private fun getGradientDrawable(orientation: RainbowOrientation, @Dp radius: Int): GradientDrawable {
+  private fun getGradientDrawable(
+    orientation: RainbowOrientation,
+    @Dp radius: Int
+  ): GradientDrawable {
     return GradientDrawable(orientation.value, rainbowColorList.toIntArray()).apply {
       cornerRadius = view.dp2Px(radius)
       alpha = this@Rainbow.alpha
