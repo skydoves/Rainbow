@@ -24,7 +24,7 @@
 Add a dependency code to your **module**'s `build.gradle` file.
 ```gradle
 dependencies {
-    implementation "com.github.skydoves:rainbow:1.0.1"
+    implementation "com.github.skydoves:rainbow:1.0.2"
 }
 ```
 

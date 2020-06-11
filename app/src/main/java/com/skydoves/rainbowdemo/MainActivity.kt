@@ -27,7 +27,7 @@ import com.skydoves.rainbow.rainbow
 import kotlinx.android.synthetic.main.activity_main.cardView0
 import kotlinx.android.synthetic.main.activity_main.cardView1
 import kotlinx.android.synthetic.main.activity_main.cardView2
-import kotlinx.android.synthetic.main.activity_main.cardView3
+import kotlinx.android.synthetic.main.activity_main.view0
 
 class MainActivity : AppCompatActivity() {
 
@@ -65,12 +65,14 @@ class MainActivity : AppCompatActivity() {
       +contextColor(R.color.md_purple_100)
     }.foreground(orientation = RainbowOrientation.TOP_BOTTOM)
 
-    Rainbow(cardView3).palette {
+    Rainbow(view0).palette {
       +contextColor(R.color.md_red_400)
       +contextColor(R.color.md_yellow_100)
       +contextColor(R.color.md_green_100)
       +contextColor(R.color.md_blue_100)
       +contextColor(R.color.white)
-    }.withAlpha(200).foreground()
+    }.withAlpha(200)
+      .withElevation(12f)
+      .background(radius = 16)
   }
 }

@@ -32,12 +32,12 @@
     android:src="@drawable/sample"
     app:cardCornerRadius="16dp" />
 
-  <androidx.cardview.widget.CardView
-    android:id="@+id/cardView3"
+  <View
+    android:id="@+id/view0"
     android:layout_width="match_parent"
     android:layout_height="120dp"
     android:layout_margin="10dp"
-    android:src="@drawable/sample"
-    app:cardCornerRadius="16dp" />
+    android:background="@color/white"
+    android:src="@drawable/sample" />
 
 </LinearLayout>
