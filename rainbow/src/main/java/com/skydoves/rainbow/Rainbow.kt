@@ -36,7 +36,7 @@ import androidx.core.widget.ImageViewCompat
 import androidx.core.widget.TextViewCompat
 
 @DslMarker
-annotation class RainbowDsl
+internal annotation class RainbowDsl
 
 /** creates an instance of [Rainbow] by a view. */
 fun View.rainbow(): Rainbow = Rainbow(this)
@@ -50,6 +50,7 @@ class Rainbow(val view: View) {
 
   /** constructs a palette for collecting colors. */
   @RainbowDsl
+  @JvmSynthetic
   inline fun palette(block: Rainbow.() -> Unit): Rainbow {
     return Rainbow(view).apply { block() }
   }

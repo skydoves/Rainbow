@@ -33,6 +33,8 @@ enum class RainbowOrientation(val value: GradientDrawable.Orientation) {
 
   /** gets [RainbowOrientation] using index value. */
   companion object {
+
+    @JvmStatic
     fun get(value: Int): RainbowOrientation {
       return when (value) {
         0 -> TOP_BOTTOM
