@@ -47,7 +47,8 @@ fun IntArray.toContextColorList(): List<ContextColor> {
 
 /** creates an instance of [ContextColor] using a resource color value. */
 fun Rainbow.contextColor(@ColorRes color: Int): ContextColor = ContextColor(
-  ContextCompat.getColor(view.context, color))
+  ContextCompat.getColor(view.context, color)
+)
 
 internal fun getColorListFromIntArray(colors: List<Int>): List<ContextColor> {
   val contextColors = mutableListOf<ContextColor>()

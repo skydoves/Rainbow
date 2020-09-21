@@ -69,7 +69,8 @@ open class RainbowView : View {
   private fun setTypeArray(a: TypedArray) {
     this.radius = px2Dp(a.getDimension(R.styleable.RainbowView_rainbowView_radius, radius.toFloat())).toInt()
     this.orientation = RainbowOrientation.get(
-      a.getInt(R.styleable.RainbowView_rainbowView_orientation, RainbowOrientation.LEFT_RIGHT.ordinal))
+      a.getInt(R.styleable.RainbowView_rainbowView_orientation, RainbowOrientation.LEFT_RIGHT.ordinal)
+    )
     val colorsId = a.getResourceId(R.styleable.RainbowView_rainbowView_colors, 0)
     this.colorList = a.resources.getIntArray(colorsId).toMutableList()
   }

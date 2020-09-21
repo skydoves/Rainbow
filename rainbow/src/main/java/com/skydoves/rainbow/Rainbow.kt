@@ -171,7 +171,8 @@ class Rainbow(val view: View) {
       states.add(android.R.attr.state_enabled)
     }
     return ColorStateList(arrayOf(states.toIntArray()), rainbowColorList.toIntArray()).withAlpha(
-      alpha)
+      alpha
+    )
   }
 
   operator fun ContextColor.unaryPlus() = rainbowColorList.add(this)
