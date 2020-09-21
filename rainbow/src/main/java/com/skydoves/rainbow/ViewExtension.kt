@@ -14,8 +14,6 @@
  * limitations under the License.
  */
 
-@file:Suppress("UNCHECKED_CAST")
-
 package com.skydoves.rainbow
 
 import android.util.DisplayMetrics
