@@ -33,23 +33,27 @@ class BinaryRainbowView : View {
       field = value
       updateBinaryRainbowView()
     }
+
   @ColorInt
   var centerColor = outRangeColor
     set(value) {
       field = value
       updateBinaryRainbowView()
     }
+
   @ColorInt
   var endColor = outRangeColor
     set(value) {
       field = value
       updateBinaryRainbowView()
     }
+
   var orientation = RainbowOrientation.LEFT_RIGHT
     set(value) {
       field = value
       updateBinaryRainbowView()
     }
+
   @Dp
   var radius = 5
     set(value) {
