@@ -18,11 +18,18 @@
 </p>
 
 ## Download
-[![Download](https://api.bintray.com/packages/devmagician/maven/rainbow/images/download.svg) ](https://bintray.com/devmagician/maven/rainbow/_latestVersion)
 [![Maven Central](https://img.shields.io/maven-central/v/com.github.skydoves/rainbow.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22com.github.skydoves%22%20AND%20a:%22rainbow%22)
 [![Jitpack](https://jitpack.io/v/skydoves/Rainbow.svg)](https://jitpack.io/#skydoves/Rainbow)
-### Gradle
-Add a dependency code to your **module**'s `build.gradle` file.
+#### Gradle
+Add below codes to your **root** `build.gradle` file (not your module build.gradle file).
+```gradle
+allprojects {
+    repositories {
+        mavenCentral()
+    }
+}
+```
+And add a dependency code to your **module**'s `build.gradle` file.
 ```gradle
 dependencies {
     implementation "com.github.skydoves:rainbow:1.0.3"
