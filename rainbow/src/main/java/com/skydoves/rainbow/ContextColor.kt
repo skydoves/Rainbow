@@ -16,5 +16,8 @@
 
 package com.skydoves.rainbow
 
-/** ContextColor is a data class for wrapping color value. */
-inline class ContextColor(val color: Int)
+import androidx.annotation.ColorInt
+
+/** ContextColor is a immutable value class for wrapping color value. */
+@JvmInline
+value class ContextColor(@ColorInt val color: Int)
