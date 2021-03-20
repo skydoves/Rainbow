@@ -37,8 +37,8 @@ dependencies {
 ```
 
 ## SNAPSHOT 
-[![Balloon](https://img.shields.io/static/v1?label=snapshot&message=balloon&logo=apache%20maven&color=C71A36)](https://oss.sonatype.org/content/repositories/snapshots/com/github/skydoves/rainbow/) <br>
-Snapshots of the current development version of Balloon are available, which track [the latest versions](https://oss.sonatype.org/content/repositories/snapshots/com/github/skydoves/rainbow/).
+[![Rainbow](https://img.shields.io/static/v1?label=snapshot&message=rainbow&logo=apache%20maven&color=C71A36)](https://oss.sonatype.org/content/repositories/snapshots/com/github/skydoves/rainbow/) <br>
+Snapshots of the current development version of Rainbow are available, which track [the latest versions](https://oss.sonatype.org/content/repositories/snapshots/com/github/skydoves/rainbow/).
 ```Gradle
 repositories {
    maven { url 'https://oss.sonatype.org/content/repositories/snapshots/' }
