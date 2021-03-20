@@ -24,9 +24,14 @@ dependencies {
     implementation "androidx.appcompat:appcompat:$versions.androidxAppcompat"
 }
 
-tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
-    kotlinOptions.freeCompilerArgs += ["-XXLanguage:+InlineClasses"]
-    kotlinOptions.freeCompilerArgs += ["-Xopt-in=kotlin.OptIn"]
+tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach {
+    kotlinOptions {
+        freeCompilerArgs += [
+            "-Xuse-experimental=kotlin.Experimental",
+        ]
+        languageVersion = "1.5"
+        apiVersion = "1.5"
+    }
 }
 
 apply plugin: "com.vanniktech.maven.publish"
