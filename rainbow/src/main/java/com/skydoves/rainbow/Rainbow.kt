@@ -20,6 +20,8 @@ package com.skydoves.rainbow
 
 import android.annotation.TargetApi
 import android.content.res.ColorStateList
+import android.graphics.LinearGradient
+import android.graphics.Shader
 import android.graphics.drawable.GradientDrawable
 import android.os.Build
 import android.view.View
@@ -102,6 +104,19 @@ class Rainbow(val view: View) {
       is TextView -> TextViewCompat.setCompoundDrawableTintList(view, getColorStateList())
       is ImageView -> ImageViewCompat.setImageTintList(view, getColorStateList())
       else -> ViewCompat.setBackgroundTintList(view, getColorStateList())
+    }
+  }
+
+  /** applies gradient effect to [TextView]. */
+  @RainbowDsl
+  fun shade() {
+    if (view is TextView) {
+      val paint = view.paint
+      val shader = LinearGradient(
+        0f, 0f, paint.measureText(view.text.toString()), view.textSize,
+        rainbowColorList.toIntArray(), null, Shader.TileMode.CLAMP
+      )
+      view.paint.shader = shader
     }
   }
 

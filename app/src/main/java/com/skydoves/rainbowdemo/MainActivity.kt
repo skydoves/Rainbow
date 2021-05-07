@@ -35,6 +35,15 @@ class MainActivity : AppCompatActivity() {
     setContentView(binding.root)
 
     with(binding) {
+      textView.rainbow().palette {
+        +contextColor(R.color.red)
+        +contextColor(R.color.md_orange_100)
+        +contextColor(R.color.md_yellow_100)
+        +contextColor(R.color.md_green_200)
+        +contextColor(R.color.md_blue_200)
+        +contextColor(R.color.md_purple_100)
+      }.shade()
+
       cardView0.rainbow().palette {
         +contextColor(R.color.skyBlue)
         +contextColor(R.color.colorPrimary)

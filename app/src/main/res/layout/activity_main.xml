@@ -8,6 +8,17 @@
   android:orientation="vertical"
   android:padding="20dp">
 
+  <TextView
+    android:id="@+id/textView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="14dp"
+    android:gravity="center"
+    android:text="Hello, here is a Rainbow."
+    android:textColor="@color/white"
+    android:textSize="22sp"
+    android:textStyle="bold" />
+
   <androidx.cardview.widget.CardView
     android:id="@+id/cardView0"
     android:layout_width="match_parent"
