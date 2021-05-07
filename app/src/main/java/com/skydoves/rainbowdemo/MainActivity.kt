@@ -22,6 +22,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.skydoves.rainbow.Rainbow
 import com.skydoves.rainbow.RainbowOrientation
 import com.skydoves.rainbow.color
+import com.skydoves.rainbow.colorArray
 import com.skydoves.rainbow.contextColor
 import com.skydoves.rainbow.rainbow
 import com.skydoves.rainbowdemo.databinding.ActivityMainBinding
@@ -35,6 +36,10 @@ class MainActivity : AppCompatActivity() {
     setContentView(binding.root)
 
     with(binding) {
+      textView.rainbow().palette {
+        +colorArray(R.array.rainbow)
+      }.shade()
+
       cardView0.rainbow().palette {
         +contextColor(R.color.skyBlue)
         +contextColor(R.color.colorPrimary)

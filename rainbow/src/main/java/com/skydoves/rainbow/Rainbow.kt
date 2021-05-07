@@ -20,12 +20,15 @@ package com.skydoves.rainbow
 
 import android.annotation.TargetApi
 import android.content.res.ColorStateList
+import android.graphics.LinearGradient
+import android.graphics.Shader
 import android.graphics.drawable.GradientDrawable
 import android.os.Build
 import android.view.View
 import android.widget.CompoundButton
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.annotation.ArrayRes
 import androidx.annotation.ColorInt
 import androidx.annotation.ColorRes
 import androidx.annotation.IntRange
@@ -60,7 +63,7 @@ class Rainbow(val view: View) {
     this.rainbowColorList.add(color(color))
   }
 
-  /** adds a resource color to the rainbow list.  */
+  /** adds a color resource to the rainbow list.  */
   fun addContextColor(@ColorRes color: Int) = apply {
     this.rainbowColorList.add(contextColor(color))
   }
@@ -72,7 +75,13 @@ class Rainbow(val view: View) {
 
   /** adds a color array to the rainbow list. */
   fun addColorArray(colors: IntArray) = apply {
-    this.rainbowColorList.addAll(colorArray(colors))
+    this.rainbowColorList.addAll(colorArray(colors).toContextColorList())
+  }
+
+  /** adds an array of color resources to the rainbow list.  */
+  fun addContextColorArray(@ArrayRes array: Int) = apply {
+    val colors = view.resources.getIntArray(array)
+    this.rainbowColorList.addAll(colorList(colors.toList()))
   }
 
   /** sets an alpha value for presenting gradation. */
@@ -102,6 +111,19 @@ class Rainbow(val view: View) {
       is TextView -> TextViewCompat.setCompoundDrawableTintList(view, getColorStateList())
       is ImageView -> ImageViewCompat.setImageTintList(view, getColorStateList())
       else -> ViewCompat.setBackgroundTintList(view, getColorStateList())
+    }
+  }
+
+  /** applies gradient effect to [TextView]. */
+  @RainbowDsl
+  fun shade() {
+    if (view is TextView) {
+      val paint = view.paint
+      val shader = LinearGradient(
+        0f, 0f, paint.measureText(view.text.toString()), view.textSize,
+        rainbowColorList.toIntArray(), null, Shader.TileMode.CLAMP
+      )
+      view.paint.shader = shader
     }
   }
 

@@ -30,4 +30,4 @@ import androidx.annotation.Dimension
   AnnotationTarget.LOCAL_VARIABLE
 )
 @Dimension(unit = Dimension.DP)
-annotation class Dp
+internal annotation class Dp
