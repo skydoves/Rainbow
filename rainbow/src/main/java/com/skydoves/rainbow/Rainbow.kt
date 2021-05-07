@@ -28,6 +28,7 @@ import android.view.View
 import android.widget.CompoundButton
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.annotation.ArrayRes
 import androidx.annotation.ColorInt
 import androidx.annotation.ColorRes
 import androidx.annotation.IntRange
@@ -62,7 +63,7 @@ class Rainbow(val view: View) {
     this.rainbowColorList.add(color(color))
   }
 
-  /** adds a resource color to the rainbow list.  */
+  /** adds a color resource to the rainbow list.  */
   fun addContextColor(@ColorRes color: Int) = apply {
     this.rainbowColorList.add(contextColor(color))
   }
@@ -75,6 +76,12 @@ class Rainbow(val view: View) {
   /** adds a color array to the rainbow list. */
   fun addColorArray(colors: IntArray) = apply {
     this.rainbowColorList.addAll(colorArray(colors))
+  }
+
+  /** adds an array of color resources to the rainbow list.  */
+  fun addContextColorArray(@ArrayRes array: Int) {
+    val colors = view.resources.getIntArray(array)
+    this.rainbowColorList.addAll(colorList(colors.toList()))
   }
 
   /** sets an alpha value for presenting gradation. */
