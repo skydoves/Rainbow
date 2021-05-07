@@ -75,11 +75,11 @@ class Rainbow(val view: View) {
 
   /** adds a color array to the rainbow list. */
   fun addColorArray(colors: IntArray) = apply {
-    this.rainbowColorList.addAll(colorArray(colors))
+    this.rainbowColorList.addAll(colorArray(colors).toContextColorList())
   }
 
   /** adds an array of color resources to the rainbow list.  */
-  fun addContextColorArray(@ArrayRes array: Int) {
+  fun addContextColorArray(@ArrayRes array: Int) = apply {
     val colors = view.resources.getIntArray(array)
     this.rainbowColorList.addAll(colorList(colors.toList()))
   }

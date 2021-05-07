@@ -18,6 +18,7 @@
 
 package com.skydoves.rainbow
 
+import androidx.annotation.ArrayRes
 import androidx.annotation.ColorInt
 import androidx.annotation.ColorRes
 import androidx.core.content.ContextCompat
@@ -36,8 +37,14 @@ fun List<Int>.toContextColorList(): List<ContextColor> {
 }
 
 /** creates a list of [ContextColor] using a color array. */
-fun Rainbow.colorArray(colors: IntArray): List<ContextColor> {
-  return colorList(colors.toList())
+fun Rainbow.colorArray(colors: IntArray): List<Int> {
+  return colors.toList()
+}
+
+/** creates a list of [ContextColor] using a color array resource. */
+fun Rainbow.colorArray(@ArrayRes array: Int): List<Int> {
+  val colors = view.resources.getIntArray(array)
+  return colors.toList()
 }
 
 /** creates a list of [ContextColor] using a color array. */
