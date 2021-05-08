@@ -10,7 +10,7 @@
 </p>
 
 <p align="center">
-🌈 An easy way to apply gradations and tinting for Android.
+🌈 Fluent syntactic sugar of Android for applying gradations, shading, and tinting.
 </p>
 
 <p align="center">
@@ -32,7 +32,7 @@ allprojects {
 And add a dependency code to your **module**'s `build.gradle` file.
 ```gradle
 dependencies {
-    implementation "com.github.skydoves:rainbow:1.0.3"
+    implementation "com.github.skydoves:rainbow:1.0.4"
 }
 ```
 
@@ -65,7 +65,7 @@ Rainbow(myCardView).palette { // constructs a palette for collecting colors.
  .foreground() // applies gradations to myCardView
 ```
 
-Here is a kotlin-extesion way to apply gradations using `View.rainbow()` method to views.
+Here is kotlin extension ways to apply gradations using `View.rainbow()` method to views.
 
 ```kotlin
 myLinearLayout.rainbow().palette {
@@ -94,6 +94,42 @@ background(orientation = RainbowOrientation.RIGHT_LEFT, radius = 8)
 background(orientation = RainbowOrientation.TOP_BOTTOM, radius = 8)
 foreground(RainbowOrientation.DIAGONAL_TOP_LEFT, 8)
 foreground(RainbowOrientation.DIAGONAL_BOTTOM_RIGHT, 8)
+```
+
+<img src="https://user-images.githubusercontent.com/24237865/117522706-bf82d880-afef-11eb-9d1a-17bc90c07fc6.jpg" align="right" width="32%"/>
+
+### Shade
+We can shade gradations on a TextView using `Rainbow` class.
+
+```kotlin
+textView.rainbow().palette {
+  +contextColor(R.color.colorPrimary)
+  +contextColor(R.color.md_orange_100)
+  +contextColor(R.color.md_yellow_100)
+  +contextColor(R.color.md_green_200)
+  +contextColor(R.color.md_blue_200)
+  +contextColor(R.color.md_purple_100)
+}.shade()
+```
+
+Also, we can apply a color array using an array resource in our XML.
+
+```kotlin
+textView.rainbow().palette {
+  +colorArray(R.array.rainbow)
+}.shade()
+```
+
+Here is a Java way.
+
+```java
+new Rainbow(textView)
+  .addContextColor(R.color.md_red_400)
+  .addContextColor(R.color.md_yellow_100)
+  .addContextColor(R.color.md_green_100)
+  .addContextColor(R.color.md_blue_100)
+  .addContextColor(R.color.white)
+  .shade();
 ```
 
 ### Tinting
