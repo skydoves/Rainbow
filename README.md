@@ -78,7 +78,7 @@ myLinearLayout.rainbow().palette {
 
 ### Background, Foreground
 We can apply gradations composed with palette colors to the view's background or foreground.<br>
-The `forground()` method can be applied to your `CardView` or something others.
+The `foreground()` method can be applied to your `CardView` or something others.
 
 ```kotlin
 Rainbow(myCardView).palette {
