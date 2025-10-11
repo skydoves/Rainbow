@@ -22,29 +22,30 @@ import android.content.Context
 import android.content.res.TypedArray
 import android.util.AttributeSet
 import android.view.View
+import androidx.annotation.ColorInt
 
 /** RainbowView represents gradation effect using colors. */
-open class RainbowView : View {
+public open class RainbowView : View {
 
   private var colorList = mutableListOf<Int>()
-  var orientation = RainbowOrientation.LEFT_RIGHT
+  public var orientation: RainbowOrientation = RainbowOrientation.LEFT_RIGHT
     set(value) {
       field = value
       updateRainbowView()
     }
-  var radius = 5
+  public var radius: Int = 5
     set(value) {
       field = value
       updateRainbowView()
     }
 
-  constructor(context: Context) : super(context)
+  public constructor(context: Context) : super(context)
 
-  constructor(context: Context, attributeSet: AttributeSet) : super(context, attributeSet) {
+  public constructor(context: Context, attributeSet: AttributeSet) : super(context, attributeSet) {
     getAttrs(attributeSet)
   }
 
-  constructor(context: Context, attributeSet: AttributeSet, defStyle: Int) : super(context, attributeSet, defStyle) {
+  public constructor(context: Context, attributeSet: AttributeSet, defStyle: Int) : super(context, attributeSet, defStyle) {
     getAttrs(attributeSet, defStyle)
   }
 
@@ -87,19 +88,19 @@ open class RainbowView : View {
   }
 
   /** adds color to the gradation color set. */
-  fun addColor(color: Int) {
+  public fun addColor(@ColorInt color: Int) {
     this.colorList.add(color)
     updateRainbowView()
   }
 
   /** removes color from the gradation color set. */
-  fun removeColor(index: Int) {
+  public fun removeColor(index: Int) {
     this.colorList.remove(index)
     updateRainbowView()
   }
 
   /** shuffles gradation colors in the color set. */
-  fun shuffleColors() {
+  public fun shuffleColors() {
     this.colorList.shuffle()
     updateRainbowView()
   }

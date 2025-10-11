@@ -25,49 +25,49 @@ import android.view.View
 import androidx.annotation.ColorInt
 
 /** BinaryRainbowView represents gradation effect using three colors. */
-class BinaryRainbowView : View {
+public class BinaryRainbowView : View {
 
   @ColorInt
-  var startColor = outRangeColor
+  public var startColor: Int = outRangeColor
     set(value) {
       field = value
       updateBinaryRainbowView()
     }
 
   @ColorInt
-  var centerColor = outRangeColor
+  public var centerColor: Int = outRangeColor
     set(value) {
       field = value
       updateBinaryRainbowView()
     }
 
   @ColorInt
-  var endColor = outRangeColor
+  public var endColor: Int = outRangeColor
     set(value) {
       field = value
       updateBinaryRainbowView()
     }
 
-  var orientation = RainbowOrientation.LEFT_RIGHT
+  public var orientation: RainbowOrientation = RainbowOrientation.LEFT_RIGHT
     set(value) {
       field = value
       updateBinaryRainbowView()
     }
 
   @Dp
-  var radius = 5
+  public var radius: Int = 5
     set(value) {
       field = value
       updateBinaryRainbowView()
     }
 
-  constructor(context: Context) : super(context)
+  public constructor(context: Context) : super(context)
 
-  constructor(context: Context, attributeSet: AttributeSet) : super(context, attributeSet) {
+  public constructor(context: Context, attributeSet: AttributeSet) : super(context, attributeSet) {
     getAttrs(attributeSet)
   }
 
-  constructor(context: Context, attributeSet: AttributeSet, defStyle: Int) : super(
+  public constructor(context: Context, attributeSet: AttributeSet, defStyle: Int) : super(
     context,
     attributeSet, defStyle
   ) {

@@ -21,7 +21,7 @@ package com.skydoves.rainbow
 import android.graphics.drawable.GradientDrawable
 
 /** RainbowOrientation is the orientation attribute for expressing gradation. */
-enum class RainbowOrientation(val value: GradientDrawable.Orientation) {
+public enum class RainbowOrientation(public val value: GradientDrawable.Orientation) {
   TOP_BOTTOM(GradientDrawable.Orientation.TOP_BOTTOM),
   DIAGONAL_TOP_RIGHT(GradientDrawable.Orientation.TR_BL),
   RIGHT_LEFT(GradientDrawable.Orientation.RIGHT_LEFT),
@@ -32,10 +32,10 @@ enum class RainbowOrientation(val value: GradientDrawable.Orientation) {
   DIAGONAL_TOP_LEFT(GradientDrawable.Orientation.TL_BR);
 
   /** gets [RainbowOrientation] using index value. */
-  companion object {
+  public companion object {
 
     @JvmStatic
-    fun get(value: Int): RainbowOrientation {
+    public fun get(value: Int): RainbowOrientation {
       return when (value) {
         0 -> TOP_BOTTOM
         1 -> DIAGONAL_TOP_RIGHT

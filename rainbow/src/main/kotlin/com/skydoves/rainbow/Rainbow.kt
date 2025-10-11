@@ -42,10 +42,10 @@ import androidx.core.widget.TextViewCompat
 internal annotation class RainbowDsl
 
 /** creates an instance of [Rainbow] by a view. */
-fun View.rainbow(): Rainbow = Rainbow(this)
+public fun View.rainbow(): Rainbow = Rainbow(this)
 
 /** An easy way to apply gradations and tinting for Android. */
-class Rainbow(val view: View) {
+public class Rainbow(public val view: View) {
 
   private val rainbowColorList: MutableList<ContextColor> = mutableListOf()
   private var alpha: Int = 255
@@ -54,43 +54,43 @@ class Rainbow(val view: View) {
   /** constructs a palette for collecting colors. */
   @RainbowDsl
   @JvmSynthetic
-  inline fun palette(block: Rainbow.() -> Unit): Rainbow {
+  public inline fun palette(block: Rainbow.() -> Unit): Rainbow {
     return Rainbow(view).apply { block() }
   }
 
   /** adds a color int to the rainbow list. */
-  fun addColor(@ColorInt color: Int) = apply {
+  public fun addColor(@ColorInt color: Int): Rainbow = apply {
     this.rainbowColorList.add(color(color))
   }
 
   /** adds a color resource to the rainbow list.  */
-  fun addContextColor(@ColorRes color: Int) = apply {
+  public fun addContextColor(@ColorRes color: Int): Rainbow = apply {
     this.rainbowColorList.add(contextColor(color))
   }
 
   /** adds a color list to the rainbow list. */
-  fun addColorList(colors: List<Int>) = apply {
+  public fun addColorList(colors: List<Int>): Rainbow = apply {
     this.rainbowColorList.addAll(colorList(colors))
   }
 
   /** adds a color array to the rainbow list. */
-  fun addColorArray(colors: IntArray) = apply {
+  public fun addColorArray(colors: IntArray): Rainbow = apply {
     this.rainbowColorList.addAll(colorArray(colors).toContextColorList())
   }
 
   /** adds an array of color resources to the rainbow list.  */
-  fun addContextColorArray(@ArrayRes array: Int) = apply {
+  public fun addContextColorArray(@ArrayRes array: Int): Rainbow = apply {
     val colors = view.resources.getIntArray(array)
     this.rainbowColorList.addAll(colorList(colors.toList()))
   }
 
   /** sets an alpha value for presenting gradation. */
-  fun withAlpha(@IntRange(from = 0, to = 255) alpha: Int) = apply {
+  public fun withAlpha(@IntRange(from = 0, to = 255) alpha: Int): Rainbow = apply {
     this.alpha = alpha
   }
 
   /** sets an elevation to the view. */
-  fun withElevation(@Dp elevation: Float) = apply {
+  public fun withElevation(@Dp elevation: Float): Rainbow = apply {
     ViewCompat.setElevation(this.view, view.dp2Px(elevation.toInt()))
   }
 
@@ -104,7 +104,7 @@ class Rainbow(val view: View) {
    *   AppCompatImageButton, AppCompatImageView, AppCompatMultiAutoCompleteTextView, AppCompatSpinner,
    *   AppCompatTextView, EmojiAppCompatButton, EmojiAppCompatEditText, EmojiAppCompatTextView
    */
-  fun tint() {
+  public fun tint() {
     if (emptyColors()) return
     when (view) {
       is CompoundButton -> CompoundButtonCompat.setButtonTintList(view, getColorStateList())
@@ -116,7 +116,7 @@ class Rainbow(val view: View) {
 
   /** applies gradient effect to [TextView]. */
   @RainbowDsl
-  fun shade() {
+  public fun shade() {
     if (view is TextView) {
       val paint = view.paint
       val shader = LinearGradient(
@@ -129,14 +129,14 @@ class Rainbow(val view: View) {
 
   /** applies gradation effect composed with palette colors to the background. For Java. */
   @RainbowDsl
-  fun background() {
+  public fun background() {
     if (emptyColors()) return
     view.background = getGradientDrawable(RainbowOrientation.LEFT_RIGHT, 0)
   }
 
   /** applies gradation effect composed with palette colors to the background. */
   @RainbowDsl
-  fun background(
+  public fun background(
     orientation: RainbowOrientation = RainbowOrientation.LEFT_RIGHT,
     @Dp radius: Int = 0
   ) {
@@ -145,17 +145,15 @@ class Rainbow(val view: View) {
   }
 
   /** applies gradation effect composed with palette colors to the foreground. For Java. */
-  @TargetApi(Build.VERSION_CODES.M)
   @RainbowDsl
-  fun foreground() {
+  public fun foreground() {
     if (emptyColors()) return
     view.foreground = getGradientDrawable(RainbowOrientation.LEFT_RIGHT, 0)
   }
 
   /** applies gradation effect composed with palette colors to the foreground. */
-  @TargetApi(Build.VERSION_CODES.M)
   @RainbowDsl
-  fun foreground(
+  public fun foreground(
     orientation: RainbowOrientation = RainbowOrientation.LEFT_RIGHT,
     @Dp radius: Int = 0
   ) {
@@ -164,12 +162,12 @@ class Rainbow(val view: View) {
   }
 
   /** gets the gradation drawable which composed with palette colors. For Java. */
-  fun getDrawable(): GradientDrawable {
+  public fun getDrawable(): GradientDrawable {
     return getGradientDrawable(RainbowOrientation.LEFT_RIGHT, 0)
   }
 
   /** gets the gradation drawable which composed with palette colors. */
-  fun getDrawable(
+  public fun getDrawable(
     orientation: RainbowOrientation = RainbowOrientation.LEFT_RIGHT,
     @Dp radius: Int = 0
   ): GradientDrawable {
@@ -198,9 +196,15 @@ class Rainbow(val view: View) {
     )
   }
 
-  operator fun ContextColor.unaryPlus() = rainbowColorList.add(this)
+  public operator fun ContextColor.unaryPlus() {
+    rainbowColorList.add(this)
+  }
 
-  operator fun List<Int>.unaryPlus() = rainbowColorList.addAll(this.toContextColorList())
+  public operator fun List<Int>.unaryPlus() {
+    rainbowColorList.addAll(this.toContextColorList())
+  }
 
-  operator fun IntArray.unaryPlus() = rainbowColorList.addAll(this.toContextColorList())
+  public operator fun IntArray.unaryPlus() {
+    rainbowColorList.addAll(this.toContextColorList())
+  }
 }

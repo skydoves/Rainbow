@@ -20,4 +20,4 @@ import androidx.annotation.ColorInt
 
 /** ContextColor is a immutable value class for wrapping color value. */
 @JvmInline
-value class ContextColor(@ColorInt val color: Int)
+public value class ContextColor(@param:ColorInt public val color: Int)
