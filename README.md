@@ -29,75 +29,58 @@ dependencies {
 }
 ```
 
-## Usage Guide
+## Usage
+We can apply gradations and tinting to any views easily using `Rainbow` class.
 
-The `Rainbow` class provides a fluent and expressive API for applying gradients and tints to Android `View` instances.
-
-### Defining a Color Palette
+### Palette
 
 A gradient is defined by a collection of colors, which we refer to as a **palette**. The `palette` lambda block is the primary mechanism for constructing this collection.
 
 Within the lambda, you can add colors using the `contextColor` and `color` functions. The `contextColor` function resolves a color resource from your `colors.xml` file, whereas the `color` function accepts a `ColorInt` value directly. These functions should be used with the unary `+` operator to add them to the palette.
 
 ```kotlin
-import com.skydoves.rainbow.Rainbow
-import com.skydoves.rainbow.contextColor
-import com.skydoves.rainbow.color
-
-val rainbow = Rainbow(myCardView)
-rainbow.palette {
-  // Add a color from a resource file (e.g., res/values/colors.xml)
-  +contextColor(R.color.red_200)
+Rainbow(myCardView).palette { // constructs a palette for collecting colors.
+  +contextColor(R.color.red_200) // getting a color from the resource
   +contextColor(R.color.yellow_200)
-  
-  // Add a ColorInt value directly
-  +color(Color.WHITE)
-}
+  +contextColor(R.color.green_200)
+  +contextColor(R.color.blue_200)
+  +color(Color.WHITE) // getting a color
+}.withAlpha(225) // sets alpha (0~255)
+ .foreground() // applies gradations to myCardView
 ```
 
-#### Kotlin Extension for Fluent Syntax
-
-For a more concise and idiomatic approach, the `View.rainbow()` extension function is provided. This allows you to chain palette creation and application directly onto any `View` instance.
+Here is kotlin extension ways to apply gradations using `View.rainbow()` method to views.
 
 ```kotlin
-import com.skydoves.rainbow.rainbow
-
 myLinearLayout.rainbow().palette {
   +contextColor(R.color.skyBlue)
   +contextColor(R.color.colorPrimary)
-}.background()
+}.background(orientation = RainbowOrientation.TOP_BOTTOM, radius = 8)
 ```
 
-### Applying Gradients to Views
+<img src="https://user-images.githubusercontent.com/24237865/63633706-6c37ed80-c687-11e9-9316-b29530c7f1a8.jpg" align="right" width="32%"/>
+
+### Background, Foreground
 
 Once a palette is defined, you can apply the resulting gradient to a view's **background** or **foreground**.
 
 ```kotlin
-// Applies the gradient to the view's background drawable.
-rainbow.background()
-
-// Applies the gradient as a foreground drawable.
-// This is particularly effective for views like CardView.
-rainbow.foreground()
+Rainbow(myCardView).palette {
+  +contextColor(R.color.red_200)
+  +contextColor(R.color.yellow_200)
+}.background() // or foreground()
 ```
 
 The gradient's orientation and corner radius can be customized. There are eight predefined orientations available in the `RainbowOrientation` enum.
 
 ```kotlin
-import com.skydoves.rainbow.RainbowOrientation
-
-// Apply a background gradient from top to bottom with an 8dp corner radius.
-myView.rainbow().palette { ... }.background(
-  orientation = RainbowOrientation.TOP_BOTTOM,
-  radius = 8
-)
-
-// Apply a foreground gradient diagonally with a 12dp corner radius.
-myCardView.rainbow().palette { ... }.foreground(
-  orientation = RainbowOrientation.DIAGONAL_TOP_LEFT,
-  radius = 12
-)
+background(orientation = RainbowOrientation.RIGHT_LEFT, radius = 8)
+background(orientation = RainbowOrientation.TOP_BOTTOM, radius = 8)
+foreground(RainbowOrientation.DIAGONAL_TOP_LEFT, 8)
+foreground(RainbowOrientation.DIAGONAL_BOTTOM_RIGHT, 8)
 ```
+
+<img src="https://user-images.githubusercontent.com/24237865/117522706-bf82d880-afef-11eb-9d1a-17bc90c07fc6.jpg" align="right" width="32%"/>
 
 ### Shading TextViews
 
@@ -136,7 +119,13 @@ myCheckBox.rainbow().palette {
 }.tint()
 ```
 
-### Retrieving as a Drawable
+```kotlin
+Rainbow(myCheckBox).palette {
+  +contextColor(R.color.red_200)
+}.tint()
+```
+
+### Drawable
 
 If you need the gradient as a `GradientDrawable` object for use elsewhere, you can retrieve it with the `getDrawable` method.
 
@@ -150,17 +139,13 @@ val gradientDrawable = Rainbow(myView).palette {
 someOtherView.background = gradientDrawable
 ```
 
-### Declarative Gradient Views
-
-For declarative UI construction in XML layouts, `Rainbow` provides custom `View` implementations. First, ensure the `app` XML namespace is declared in your root layout element:
-
-```xml
-xmlns:app="http://schemas.android.com/apk/res-auto"
-```
-
-#### RainbowView
+### RainbowView
 
 `RainbowView` is a versatile view that renders a multi-color gradient. It sources its colors from a color-array resource.
+
+<img src="https://user-images.githubusercontent.com/24237865/63634479-f8e7a900-c691-11e9-99b7-c40651a593f0.gif" align="right" width="33%"/>
+
+#### RainbowView in xml layout
 
 ```xml
 <com.skydoves.rainbow.RainbowView
@@ -172,23 +157,39 @@ xmlns:app="http://schemas.android.com/apk/res-auto"
   app:rainbowView_radius="12dp" />
 ```
 
-#### BinaryRainbowView
+The `rainbowView_colors` attributes gets color list from the color-array from your `colors.xml`.
+
+```xml
+<resources>
+  <color name="colorPrimary">#C51162</color>
+  ...
+  <array name="colors">
+    <item>@color/red_100</item>
+    <item>@color/orange_100</item>
+    <item>@color/yellow_100</item>
+    <item>@color/green_100</item>
+    ...
+  </array>
+</resources>
+```
+
+### BinaryRainbowView
 
 `BinaryRainbowView` is a simplified version for creating two or three-color gradients directly from color attributes.
 
 ```xml
 <com.skydoves.rainbow.BinaryRainbowView
-  android:id="@+id/binaryRainbowView"
   android:layout_width="match_parent"
   android:layout_height="80dp"
-  app:binaryRainbowView_startColor="@color/md_green_100"
-  app:binaryRainbowView_centerColor="@color/white"
-  app:binaryRainbowView_endColor="@color/skyBlue"
-  app:binaryRainbowView_orientation="bottom_top"
-  app:binaryRainbowView_radius="12dp" />
+  app:binaryRainbowView_startColor="@color/md_green_100" // starting color of the gradient.
+  app:binaryRainbowView_centerColor="@color/white" // center color of the gradient.
+  app:binaryRainbowView_endColor="@color/skyBlue" // end color of the gradient.
+  app:binaryRainbowView_orientation="bottom_top" // gradient orientation.
+  app:binaryRainbowView_radius="12dp" // corner radius
+/>
 ```
 
-### Shuffling Gradient Colors
+### Shuffle
 
 Both `RainbowView` and `BinaryRainbowView` support dynamic shuffling of their palette colors. Calling the `shuffleColors()` method will randomly reorder the gradient colors, providing a simple way to create dynamic visual effects.
 
