@@ -10,7 +10,7 @@
 </p>
 
 <p align="center">
-🌈 Fluent syntactic sugar of Android for applying gradations, shading, and tinting.
+🌈 An expressive Kotlin DSL for dynamically creating and applying gradients, text shaders, and tints to any Android View.
 </p>
 
 <p align="center">
