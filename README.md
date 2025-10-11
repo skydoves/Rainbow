@@ -29,10 +29,6 @@ dependencies {
 }
 ```
 
-Of course. Here is an improved version of the documentation, rewritten with a more formal and instructive tone, improved grammar, and with all Java-specific examples removed to focus on modern Kotlin usage.
-
-***
-
 ## Usage Guide
 
 The `Rainbow` class provides a fluent and expressive API for applying gradients and tints to Android `View` instances.
