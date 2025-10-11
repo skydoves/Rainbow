@@ -10,7 +10,7 @@
 </p>
 
 <p align="center">
-🌈 An expressive Kotlin DSL for dynamically creating and applying gradients, text shaders, and tints to any Android View.
+🌈 An expressive Kotlin DSL for dynamically creating and <br>applying gradients, text shaders, and tints to any Android View.
 </p>
 
 <p align="center">
