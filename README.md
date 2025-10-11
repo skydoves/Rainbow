@@ -2,7 +2,7 @@
 
 <p align="center">
   <a href="https://opensource.org/licenses/Apache-2.0"><img alt="License" src="https://img.shields.io/badge/License-Apache%202.0-blue.svg"/></a>
-  <a href="https://android-arsenal.com/api?level=16"><img alt="API" src="https://img.shields.io/badge/API-16%2B-brightgreen.svg?style=flat"/></a>
+  <a href="https://android-arsenal.com/api?level=23"><img alt="API" src="https://img.shields.io/badge/API-23%2B-brightgreen.svg?style=flat"/></a>
   <a href="https://travis-ci.org/skydoves/Rainbow"><img alt="BuildStatus" src="https://travis-ci.org/skydoves/Rainbow.svg?branch=master"/></a>
    <a href="https://androidweekly.net/issues/issue-398"><img alt="Android Weekly" src="https://img.shields.io/badge/Android%20Weekly-%23398-orange"/></a>
   <a href="https://us12.campaign-archive.com/?u=f39692e245b94f7fb693b6d82&id=febdf46615"><img alt="KotlinWeekly" src="https://img.shields.io/badge/KotlinWeekly-%23165-4E71E6"/></a>
