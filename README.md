@@ -143,8 +143,6 @@ someOtherView.background = gradientDrawable
 
 `RainbowView` is a versatile view that renders a multi-color gradient. It sources its colors from a color-array resource.
 
-<img src="https://user-images.githubusercontent.com/24237865/63634479-f8e7a900-c691-11e9-99b7-c40651a593f0.gif" align="right" width="33%"/>
-
 #### RainbowView in xml layout
 
 ```xml
@@ -192,6 +190,8 @@ The `rainbowView_colors` attributes gets color list from the color-array from yo
 ### Shuffle
 
 Both `RainbowView` and `BinaryRainbowView` support dynamic shuffling of their palette colors. Calling the `shuffleColors()` method will randomly reorder the gradient colors, providing a simple way to create dynamic visual effects.
+
+<img src="https://user-images.githubusercontent.com/24237865/63634479-f8e7a900-c691-11e9-99b7-c40651a593f0.gif" align="right" width="33%"/>
 
 ```kotlin
 val rainbowView = findViewById<RainbowView>(R.id.rainbowView)
