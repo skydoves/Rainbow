@@ -18,12 +18,10 @@
 
 package com.skydoves.rainbow
 
-import android.annotation.TargetApi
 import android.content.res.ColorStateList
 import android.graphics.LinearGradient
 import android.graphics.Shader
 import android.graphics.drawable.GradientDrawable
-import android.os.Build
 import android.view.View
 import android.widget.CompoundButton
 import android.widget.ImageView
@@ -120,8 +118,13 @@ public class Rainbow(public val view: View) {
     if (view is TextView) {
       val paint = view.paint
       val shader = LinearGradient(
-        0f, 0f, paint.measureText(view.text.toString()), view.textSize,
-        rainbowColorList.toIntArray(), null, Shader.TileMode.CLAMP
+        0f,
+        0f,
+        paint.measureText(view.text.toString()),
+        view.textSize,
+        rainbowColorList.toIntArray(),
+        null,
+        Shader.TileMode.CLAMP,
       )
       view.paint.shader = shader
     }
@@ -138,7 +141,7 @@ public class Rainbow(public val view: View) {
   @RainbowDsl
   public fun background(
     orientation: RainbowOrientation = RainbowOrientation.LEFT_RIGHT,
-    @Dp radius: Int = 0
+    @Dp radius: Int = 0,
   ) {
     if (emptyColors()) return
     view.background = getGradientDrawable(orientation, radius)
@@ -155,7 +158,7 @@ public class Rainbow(public val view: View) {
   @RainbowDsl
   public fun foreground(
     orientation: RainbowOrientation = RainbowOrientation.LEFT_RIGHT,
-    @Dp radius: Int = 0
+    @Dp radius: Int = 0,
   ) {
     if (emptyColors()) return
     view.foreground = getGradientDrawable(orientation, radius)
@@ -169,14 +172,14 @@ public class Rainbow(public val view: View) {
   /** gets the gradation drawable which composed with palette colors. */
   public fun getDrawable(
     orientation: RainbowOrientation = RainbowOrientation.LEFT_RIGHT,
-    @Dp radius: Int = 0
+    @Dp radius: Int = 0,
   ): GradientDrawable {
     return getGradientDrawable(orientation, radius)
   }
 
   private fun getGradientDrawable(
     orientation: RainbowOrientation,
-    @Dp radius: Int
+    @Dp radius: Int,
   ): GradientDrawable {
     return GradientDrawable(orientation.value, rainbowColorList.toIntArray()).apply {
       cornerRadius = view.dp2Px(radius)
@@ -192,7 +195,7 @@ public class Rainbow(public val view: View) {
       states.add(android.R.attr.state_enabled)
     }
     return ColorStateList(arrayOf(states.toIntArray()), rainbowColorList.toIntArray()).withAlpha(
-      alpha
+      alpha,
     )
   }
 

@@ -1,0 +1,106 @@
+public final class com/skydoves/rainbow/BinaryRainbowView : android/view/View {
+	public fun <init> (Landroid/content/Context;)V
+	public fun <init> (Landroid/content/Context;Landroid/util/AttributeSet;)V
+	public fun <init> (Landroid/content/Context;Landroid/util/AttributeSet;I)V
+	public final fun getCenterColor ()I
+	public final fun getEndColor ()I
+	public final fun getOrientation ()Lcom/skydoves/rainbow/RainbowOrientation;
+	public final fun getRadius ()I
+	public final fun getStartColor ()I
+	public final fun setCenterColor (I)V
+	public final fun setEndColor (I)V
+	public final fun setOrientation (Lcom/skydoves/rainbow/RainbowOrientation;)V
+	public final fun setRadius (I)V
+	public final fun setStartColor (I)V
+}
+
+public final class com/skydoves/rainbow/ContextColor {
+	public static final synthetic fun box-impl (I)Lcom/skydoves/rainbow/ContextColor;
+	public static fun constructor-impl (I)I
+	public fun equals (Ljava/lang/Object;)Z
+	public static fun equals-impl (ILjava/lang/Object;)Z
+	public static final fun equals-impl0 (II)Z
+	public final fun getColor ()I
+	public fun hashCode ()I
+	public static fun hashCode-impl (I)I
+	public fun toString ()Ljava/lang/String;
+	public static fun toString-impl (I)Ljava/lang/String;
+	public final synthetic fun unbox-impl ()I
+}
+
+public final class com/skydoves/rainbow/Rainbow {
+	public fun <init> (Landroid/view/View;)V
+	public final fun addColor (I)Lcom/skydoves/rainbow/Rainbow;
+	public final fun addColorArray ([I)Lcom/skydoves/rainbow/Rainbow;
+	public final fun addColorList (Ljava/util/List;)Lcom/skydoves/rainbow/Rainbow;
+	public final fun addContextColor (I)Lcom/skydoves/rainbow/Rainbow;
+	public final fun addContextColorArray (I)Lcom/skydoves/rainbow/Rainbow;
+	public final fun background ()V
+	public final fun background (Lcom/skydoves/rainbow/RainbowOrientation;I)V
+	public static synthetic fun background$default (Lcom/skydoves/rainbow/Rainbow;Lcom/skydoves/rainbow/RainbowOrientation;IILjava/lang/Object;)V
+	public final fun foreground ()V
+	public final fun foreground (Lcom/skydoves/rainbow/RainbowOrientation;I)V
+	public static synthetic fun foreground$default (Lcom/skydoves/rainbow/Rainbow;Lcom/skydoves/rainbow/RainbowOrientation;IILjava/lang/Object;)V
+	public final fun getDrawable ()Landroid/graphics/drawable/GradientDrawable;
+	public final fun getDrawable (Lcom/skydoves/rainbow/RainbowOrientation;I)Landroid/graphics/drawable/GradientDrawable;
+	public static synthetic fun getDrawable$default (Lcom/skydoves/rainbow/Rainbow;Lcom/skydoves/rainbow/RainbowOrientation;IILjava/lang/Object;)Landroid/graphics/drawable/GradientDrawable;
+	public final fun getView ()Landroid/view/View;
+	public final synthetic fun palette (Lkotlin/jvm/functions/Function1;)Lcom/skydoves/rainbow/Rainbow;
+	public final fun shade ()V
+	public final fun tint ()V
+	public final fun unaryPlus (Ljava/util/List;)V
+	public final fun unaryPlus ([I)V
+	public final fun unaryPlus-DlNB37I (I)V
+	public final fun withAlpha (I)Lcom/skydoves/rainbow/Rainbow;
+	public final fun withElevation (F)Lcom/skydoves/rainbow/Rainbow;
+}
+
+public final class com/skydoves/rainbow/RainbowExtensionKt {
+	public static final fun color (Lcom/skydoves/rainbow/Rainbow;I)I
+	public static final fun colorArray (Lcom/skydoves/rainbow/Rainbow;I)Ljava/util/List;
+	public static final fun colorArray (Lcom/skydoves/rainbow/Rainbow;[I)Ljava/util/List;
+	public static final fun colorList (Lcom/skydoves/rainbow/Rainbow;Ljava/util/List;)Ljava/util/List;
+	public static final fun contextColor (Lcom/skydoves/rainbow/Rainbow;I)I
+	public static final fun toContextColorList (Ljava/util/List;)Ljava/util/List;
+	public static final fun toContextColorList ([I)Ljava/util/List;
+}
+
+public final class com/skydoves/rainbow/RainbowKt {
+	public static final fun rainbow (Landroid/view/View;)Lcom/skydoves/rainbow/Rainbow;
+}
+
+public final class com/skydoves/rainbow/RainbowOrientation : java/lang/Enum {
+	public static final field BOTTOM_TOP Lcom/skydoves/rainbow/RainbowOrientation;
+	public static final field Companion Lcom/skydoves/rainbow/RainbowOrientation$Companion;
+	public static final field DIAGONAL_BOTTOM_LEFT Lcom/skydoves/rainbow/RainbowOrientation;
+	public static final field DIAGONAL_BOTTOM_RIGHT Lcom/skydoves/rainbow/RainbowOrientation;
+	public static final field DIAGONAL_TOP_LEFT Lcom/skydoves/rainbow/RainbowOrientation;
+	public static final field DIAGONAL_TOP_RIGHT Lcom/skydoves/rainbow/RainbowOrientation;
+	public static final field LEFT_RIGHT Lcom/skydoves/rainbow/RainbowOrientation;
+	public static final field RIGHT_LEFT Lcom/skydoves/rainbow/RainbowOrientation;
+	public static final field TOP_BOTTOM Lcom/skydoves/rainbow/RainbowOrientation;
+	public static final fun get (I)Lcom/skydoves/rainbow/RainbowOrientation;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public final fun getValue ()Landroid/graphics/drawable/GradientDrawable$Orientation;
+	public static fun valueOf (Ljava/lang/String;)Lcom/skydoves/rainbow/RainbowOrientation;
+	public static fun values ()[Lcom/skydoves/rainbow/RainbowOrientation;
+}
+
+public final class com/skydoves/rainbow/RainbowOrientation$Companion {
+	public final fun get (I)Lcom/skydoves/rainbow/RainbowOrientation;
+}
+
+public class com/skydoves/rainbow/RainbowView : android/view/View {
+	public fun <init> (Landroid/content/Context;)V
+	public fun <init> (Landroid/content/Context;Landroid/util/AttributeSet;)V
+	public fun <init> (Landroid/content/Context;Landroid/util/AttributeSet;I)V
+	public final fun addColor (I)V
+	public final fun getOrientation ()Lcom/skydoves/rainbow/RainbowOrientation;
+	public final fun getRadius ()I
+	protected fun onFinishInflate ()V
+	public final fun removeColor (I)V
+	public final fun setOrientation (Lcom/skydoves/rainbow/RainbowOrientation;)V
+	public final fun setRadius (I)V
+	public final fun shuffleColors ()V
+}
+

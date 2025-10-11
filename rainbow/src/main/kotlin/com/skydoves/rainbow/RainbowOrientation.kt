@@ -29,7 +29,8 @@ public enum class RainbowOrientation(public val value: GradientDrawable.Orientat
   BOTTOM_TOP(GradientDrawable.Orientation.BOTTOM_TOP),
   DIAGONAL_BOTTOM_LEFT(GradientDrawable.Orientation.BL_TR),
   LEFT_RIGHT(GradientDrawable.Orientation.LEFT_RIGHT),
-  DIAGONAL_TOP_LEFT(GradientDrawable.Orientation.TL_BR);
+  DIAGONAL_TOP_LEFT(GradientDrawable.Orientation.TL_BR),
+  ;
 
   /** gets [RainbowOrientation] using index value. */
   public companion object {

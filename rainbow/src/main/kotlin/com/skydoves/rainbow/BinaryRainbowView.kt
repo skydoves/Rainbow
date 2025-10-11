@@ -69,7 +69,8 @@ public class BinaryRainbowView : View {
 
   public constructor(context: Context, attributeSet: AttributeSet, defStyle: Int) : super(
     context,
-    attributeSet, defStyle
+    attributeSet,
+    defStyle,
   ) {
     getAttrs(attributeSet, defStyle)
   }
@@ -99,8 +100,8 @@ public class BinaryRainbowView : View {
     this.orientation = RainbowOrientation.get(
       a.getInt(
         R.styleable.BinaryRainbowView_binaryRainbowView_orientation,
-        RainbowOrientation.LEFT_RIGHT.ordinal
-      )
+        RainbowOrientation.LEFT_RIGHT.ordinal,
+      ),
     )
     this.startColor =
       a.getColor(R.styleable.BinaryRainbowView_binaryRainbowView_startColor, outRangeColor)
